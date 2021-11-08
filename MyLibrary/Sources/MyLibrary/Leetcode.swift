@@ -46,6 +46,44 @@ class Solution {
     }
     return idx == count
   }
+  
+  func getHint(_ secret: String, _ guess: String) -> String {
+    var ACount = 0
+    var BCount = 0
+    var secretDic = [Character: Int]()
+    for (idx, char) in guess.enumerated() {
+      let temp = secret[idx]
+      if char == temp {
+        ACount += 1
+        continue
+      }
+      let secretCharCount = secretDic[temp] ?? 0
+      if secretCharCount < 0 {
+        BCount += 1
+      }
+      let guessCharCount = secretDic[char] ?? 0
+      if guessCharCount > 0 {
+        BCount += 1
+      }
+      secretDic[temp] = secretCharCount + 1
+      secretDic[char] = guessCharCount - 1
+    }
+    return "\(ACount)A\(BCount)B"
+  }
+  
+  func fib(_ n: Int) -> Int {
+    if n == 0 {
+      return 0
+    }
+    if n == 1 {
+      return 1
+    }
+    var arr = [0, 1]
+    for idx in 2 ... n {
+      arr.append(arr[idx - 1] + arr[idx - 2])
+    }
+    return arr.last!
+  }
 }
 
 extension StringProtocol {

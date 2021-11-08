@@ -17,4 +17,17 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertTrue(solution.isSubsequence("abc", "ahbgdc"))
     XCTAssertFalse(solution.isSubsequence("axc", "ahbgdc"))
   }
+  
+  func test_299() {
+    XCTAssertEqual(solution.getHint("1807", "7810"), "1A3B")
+    XCTAssertEqual(solution.getHint("1123", "0111"), "1A1B")
+    XCTAssertEqual(solution.getHint("1", "0"), "0A0B")
+    XCTAssertEqual(solution.getHint("1", "1"), "1A0B")
+  }
+  
+  func test_509() {
+    XCTAssertEqual(solution.fib(2), 1)
+    XCTAssertEqual(solution.fib(3), 2)
+    XCTAssertEqual(solution.fib(4), 3)
+  }
 }
