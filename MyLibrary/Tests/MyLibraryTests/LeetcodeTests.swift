@@ -30,4 +30,25 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.fib(3), 2)
     XCTAssertEqual(solution.fib(4), 3)
   }
+  
+  // leetcode 超时
+  func test_488() {
+    XCTAssertEqual(solution.findMinStep("WRRBBW", "RB"), -1)
+    XCTAssertEqual(solution.findMinStep("WWRRBBWW", "WRBRW"), 2)
+    XCTAssertEqual(solution.findMinStep("G", "GGGGG"), 2)
+    XCTAssertEqual(solution.findMinStep("RBYYBBRRB", "YRBGB"), 3)
+    XCTAssertEqual(solution.findMinStep("WW", "WW"), 1)
+    XCTAssertEqual(solution.findMinStep("RRYGGYYRRYYGGYRR", "GGBBB"), 5)
+  }
+  
+  func test_495() {
+    XCTAssertEqual(solution.findPoisonedDuration([1,4], 2), 4)
+    XCTAssertEqual(solution.findPoisonedDuration([1,2], 2), 3)
+  }
+  
+  func test_1025() {
+    XCTAssertTrue(solution.divisorGame(2))
+    XCTAssertFalse(solution.divisorGame(3))
+  }
+  
 }

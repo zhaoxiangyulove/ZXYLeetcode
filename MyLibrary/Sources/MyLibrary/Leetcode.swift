@@ -1,3 +1,4 @@
+import CoreGraphics
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -83,6 +84,73 @@ class Solution {
       arr.append(arr[idx - 1] + arr[idx - 2])
     }
     return arr.last!
+  }
+  
+  let maxScore = 6
+  var dic = [String: Int]()
+  func findMinStep(_ board: String, _ hand: String) -> Int {
+    if backtrack(board, hand) == maxScore {
+      return -1
+    }
+    return dic["\(board), \(hand)"] ?? -1
+  }
+  
+  private func backtrack(_ board: String, _ hand: String) -> Int {
+    var score = maxScore
+    if board.isEmpty {
+      return score
+    }
+    let key = "\(board), \(hand)"
+    if let score = dic[key] {
+      return score
+    }
+    for (idxH, charH) in hand.enumerated() {
+      for (idxB, _) in board.enumerated() {
+        var newB = board
+        newB.insert(charH, at: newB.index(newB.startIndex, offsetBy: idxB))
+        let ret = recur(newB)
+        if ret.isEmpty {
+          dic[key] = 1;
+          return 1
+        }
+        var newH = hand
+        newH.remove(at: newH.index(newH.startIndex, offsetBy: idxH))
+        score = min(score, backtrack(newB, newH) + 1)
+      }
+    }
+    dic[key] = score;
+    return score
+  }
+  
+  private func recur(_ board: String) -> String {
+    let len = board.count;
+    var l = 0
+    for r in 0 ... len {
+      if r < len, board[l] == board[r] {
+        continue
+      }
+      if r - l > 2 {
+        var temp = board
+        temp.removeSubrange(temp.index(temp.startIndex, offsetBy: l)..<temp.index(temp.startIndex, offsetBy: r))
+        return recur(temp)
+      } else {
+        l = r
+      }
+    }
+    return board
+  }
+  
+  func findPoisonedDuration(_ timeSeries: [Int], _ duration: Int) -> Int {
+    var poisonedDuration = 0
+    for index in 0 ..< timeSeries.count - 1 {
+      let dif = timeSeries[index + 1] - timeSeries[index]
+      poisonedDuration += dif < duration ? dif : duration
+    }
+    return poisonedDuration + duration
+  }
+  
+  func divisorGame(_ n: Int) -> Bool {
+    n & 1 == 0
   }
 }
 
