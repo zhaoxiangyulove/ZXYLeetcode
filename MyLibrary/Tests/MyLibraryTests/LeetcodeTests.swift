@@ -51,4 +51,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.divisorGame(3))
   }
   
+  func test_520() {
+    XCTAssertTrue(solution.detectCapitalUse("USA"))
+    XCTAssertFalse(solution.detectCapitalUse("FlaG"))
+  }
+  
 }

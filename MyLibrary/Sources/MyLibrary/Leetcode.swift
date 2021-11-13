@@ -152,6 +152,19 @@ class Solution {
   func divisorGame(_ n: Int) -> Bool {
     n & 1 == 0
   }
+  
+  func detectCapitalUse(_ word: String) -> Bool {
+    let hasLowercase = word.first {
+      $0 > "Z"
+    } != nil
+    guard hasLowercase else {
+      return true
+    }
+    let temp = word.suffix(from: word.index(after: word.startIndex))
+    return temp.first {
+      $0 < "a"
+    } == nil
+  }
 }
 
 extension StringProtocol {
