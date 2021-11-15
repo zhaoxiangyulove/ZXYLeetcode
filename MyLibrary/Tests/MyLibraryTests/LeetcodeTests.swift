@@ -51,4 +51,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.divisorGame(3))
   }
   
+  func test_375() {
+    XCTAssertEqual(solution.getMoneyAmount(10), 16)
+    XCTAssertEqual(solution.getMoneyAmount(1), 0)
+    XCTAssertEqual(solution.getMoneyAmount(2), 1)
+  }
+  
 }

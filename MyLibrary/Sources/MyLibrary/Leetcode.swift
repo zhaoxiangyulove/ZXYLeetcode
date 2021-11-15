@@ -1,4 +1,3 @@
-import CoreGraphics
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -151,6 +150,19 @@ class Solution {
   
   func divisorGame(_ n: Int) -> Bool {
     n & 1 == 0
+  }
+  
+  func getMoneyAmount(_ n: Int) -> Int {
+    var dp = [[Int]](repeating: [Int](repeating: 0, count: n + 1), count: n + 1)
+    for i in stride(from: n - 1, to: 0, by: -1) {
+      for j in i + 1 ... n {
+        dp[i][j] = Int.max
+        for k in i ..< j {
+          dp[i][j] = min(dp[i][j], k + max(dp[i][k - 1], dp[k + 1][j]))
+        }
+      }
+    }
+    return dp[1][n]
   }
 }
 
