@@ -3,6 +3,7 @@ import XCTest
 
 final class LeetcodeTestCase: XCTestCase {
   let solution = Solution()
+  let mapSum = MapSum()
   func test_268() {
     XCTAssertEqual(solution.missingNumber([3,0,1]), 2)
     XCTAssertEqual(solution.missingNumber([0,1]), 2)
@@ -56,4 +57,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.detectCapitalUse("FlaG"))
   }
   
+  func test_677() {
+    mapSum.insert("apple", 3)
+    XCTAssertEqual(mapSum.sum("ap"), 3)
+    mapSum.insert("app", 2)
+    XCTAssertEqual(mapSum.sum("ap"),5)
+  }
 }
