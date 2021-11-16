@@ -1,3 +1,4 @@
+import Darwin
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -164,7 +165,13 @@ class Solution {
     }
     return dp[1][n]
   }
+  
+  func bulbSwitch(_ n: Int) -> Int {
+    Int(floor(sqrt(Double(n))))
+  }
 }
+
+
 
 extension StringProtocol {
     subscript(offset: Int) -> Character {

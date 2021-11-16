@@ -57,4 +57,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.getMoneyAmount(2), 1)
   }
   
+  func test_319() {
+    XCTAssertEqual(solution.bulbSwitch(3), 1)
+    XCTAssertEqual(solution.bulbSwitch(0), 0)
+    XCTAssertEqual(solution.bulbSwitch(1), 1)
+    XCTAssertEqual(solution.bulbSwitch(9999999), 3162)
+  }
+  
 }
