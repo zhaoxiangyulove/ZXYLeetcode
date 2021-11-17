@@ -3,6 +3,7 @@ import XCTest
 
 final class LeetcodeTestCase: XCTestCase {
   let solution = Solution()
+  let mapSum = MapSum()
   func test_268() {
     XCTAssertEqual(solution.missingNumber([3,0,1]), 2)
     XCTAssertEqual(solution.missingNumber([0,1]), 2)
@@ -51,6 +52,18 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.divisorGame(3))
   }
   
+  func test_520() {
+    XCTAssertTrue(solution.detectCapitalUse("USA"))
+    XCTAssertFalse(solution.detectCapitalUse("FlaG"))
+  }
+  
+  func test_677() {
+    mapSum.insert("apple", 3)
+    XCTAssertEqual(mapSum.sum("ap"), 3)
+    mapSum.insert("app", 2)
+    XCTAssertEqual(mapSum.sum("ap"),5)
+  }
+
   func test_375() {
     XCTAssertEqual(solution.getMoneyAmount(10), 16)
     XCTAssertEqual(solution.getMoneyAmount(1), 0)
@@ -71,5 +84,4 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.isRectangleCover([[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]))
     XCTAssertFalse(solution.isRectangleCover([[0,0,1,1],[0,0,2,1],[1,0,2,1],[0,2,2,3]]))
   }
-  
 }

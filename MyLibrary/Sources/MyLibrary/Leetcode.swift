@@ -153,6 +153,19 @@ class Solution {
     n & 1 == 0
   }
   
+  func detectCapitalUse(_ word: String) -> Bool {
+    let hasLowercase = word.first {
+      $0 > "Z"
+    } != nil
+    guard hasLowercase else {
+      return true
+    }
+    let temp = word.suffix(from: word.index(after: word.startIndex))
+    return temp.first {
+      $0 < "a"
+    } == nil
+  }
+
   func getMoneyAmount(_ n: Int) -> Int {
     var dp = [[Int]](repeating: [Int](repeating: 0, count: n + 1), count: n + 1)
     for i in stride(from: n - 1, to: 0, by: -1) {
