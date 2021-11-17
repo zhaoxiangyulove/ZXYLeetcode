@@ -169,12 +169,47 @@ class Solution {
   func bulbSwitch(_ n: Int) -> Int {
     Int(floor(sqrt(Double(n))))
   }
+  
+  func isRectangleCover(_ rectangles: [[Int]]) -> Bool {
+    var leftBottom = (rectangles[0][0], rectangles[0][1]);
+    var rightTop = (rectangles[0][2], rectangles[0][3])
+    var points = [(Int, Int)]()
+    var temp = 0
+    for rectangle in rectangles {
+      leftBottom = (min(leftBottom.0, rectangle[0]), min(leftBottom.1, rectangle[1]))
+      rightTop = (max(rightTop.0,rectangle[2]), max(rightTop.1, rectangle[3]))
+      temp += (rectangle[2] - rectangle[0]) * (rectangle[3] - rectangle[1])
+      for point in [(rectangle[0], rectangle[1]), (rectangle[2], rectangle[1]), (rectangle[2], rectangle[3]), (rectangle[0], rectangle[3])] {
+        if let pointIndex = points.firstIndex(where: {
+          point.0 == $0.0 && point.1 == $0.1
+        }) {
+          points.remove(at: pointIndex)
+        } else {
+          points.append(point)
+        }
+      }
+    }
+    let target = (rightTop.0 - leftBottom.0) * (rightTop.1 - leftBottom.1)
+    return target == temp && points.count == 4 && containPoint(leftBottom: leftBottom, rightTop: rightTop, in: points)
+  }
+  
+  func containPoint(leftBottom: (Int, Int), rightTop: (Int, Int), in points: [(Int, Int)]) -> Bool {
+    let temp = [(leftBottom.0, leftBottom.1), (rightTop.0, rightTop.1), (leftBottom.0, rightTop.1), (rightTop.0, leftBottom.1)]
+    for point in points {
+      guard temp.contains(where: { (x, y) in
+        x == point.0 && y == point.1
+      }) else {
+        return false
+      }
+    }
+    return true
+  }
 }
 
 
 
 extension StringProtocol {
-    subscript(offset: Int) -> Character {
-        self[index(startIndex, offsetBy: offset)]
-    }
+  subscript(offset: Int) -> Character {
+    self[index(startIndex, offsetBy: offset)]
+  }
 }
