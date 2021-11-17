@@ -84,4 +84,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.isRectangleCover([[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]))
     XCTAssertFalse(solution.isRectangleCover([[0,0,1,1],[0,0,2,1],[1,0,2,1],[0,2,2,3]]))
   }
+  
+  func test_318(){
+    XCTAssertEqual(solution.maxProduct(["abcw","baz","foo","bar","xtfn","abcdef"]), 16)
+    XCTAssertEqual(solution.maxProduct(["a","ab","abc","d","cd","bcd","abcd"]), 4)
+    XCTAssertEqual(solution.maxProduct(["a","aa","aaa","aaaa"]), 0)
+  }
 }

@@ -217,6 +217,26 @@ class Solution {
     }
     return true
   }
+  
+  func maxProduct(_ words: [String]) -> Int {
+    let masks = words.map { word -> Int in
+      var mask = 0
+      for char in word {
+        mask |= 1 << (char.asciiValue! - 97)
+      }
+      return mask
+    }
+    let count = masks.count
+    var maxP = 0
+    for i in 0 ..< count {
+      for j in i+1 ..< count {
+        if masks[i] & masks[j] == 0 {
+          maxP = max(maxP, words[i].count * words[j].count)
+        }
+      }
+    }
+    return maxP
+  }
 }
 
 
