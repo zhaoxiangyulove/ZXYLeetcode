@@ -95,4 +95,10 @@ final class LeetcodeTestCase: XCTestCase {
     let root = TreeNode(1, TreeNode(2), TreeNode(3))
     XCTAssertEqual(solution.findTilt(root), 1)
   }
+  
+  func test_397() {
+//    XCTAssertEqual(solution.integerReplacement(8), 3)
+//    XCTAssertEqual(solution.integerReplacement(7), 4)
+    XCTAssertEqual(solution.integerReplacement(199999999), 33)
+  }
 }

@@ -253,6 +253,25 @@ class Solution {
     sum += abs(right - left)
     return root.val + left + right
   }
+  
+  func integerReplacement(_ n: Int) -> Int {
+    var step = 0
+    var m = n
+    while m != 1 {
+      if m % 2 == 1 {
+        let temp = m - 1
+        if temp / 2 % 2 == 1 && temp / 2 != 1 {
+          m += 1
+        } else {
+          m = temp
+        }
+      } else {
+        m = m / 2
+      }
+      step += 1
+    }
+    return step
+  }
 }
 
 
