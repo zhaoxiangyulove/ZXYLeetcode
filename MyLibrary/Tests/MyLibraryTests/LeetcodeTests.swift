@@ -90,4 +90,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.maxProduct(["a","ab","abc","d","cd","bcd","abcd"]), 4)
     XCTAssertEqual(solution.maxProduct(["a","aa","aaa","aaaa"]), 0)
   }
+  
+  func test_563() {
+    let root = TreeNode(1, TreeNode(2), TreeNode(3))
+    XCTAssertEqual(solution.findTilt(root), 1)
+  }
 }

@@ -237,6 +237,22 @@ class Solution {
     }
     return maxP
   }
+  
+  var sum = 0
+  func findTilt(_ root: TreeNode?) -> Int {
+    _ = mapTilt(root)
+    return sum
+  }
+  
+  func mapTilt(_ root: TreeNode?) -> Int {
+    guard let root = root else {
+      return 0
+    }
+    let left = mapTilt(root.left)
+    let right = mapTilt(root.right)
+    sum += abs(right - left)
+    return root.val + left + right
+  }
 }
 
 
