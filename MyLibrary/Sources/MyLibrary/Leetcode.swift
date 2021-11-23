@@ -272,6 +272,20 @@ class Solution {
     }
     return step
   }
+  
+  func buddyStrings(_ s: String, _ goal: String) -> Bool {
+    if s.count != goal.count { return false }
+    if s == goal, Set(s).count < s.count { return true }
+    var arr = [[Character]]()
+    let zip = zip(s, goal)
+    for (c1, c2) in zip {
+      if c1 != c2 {
+        if arr.count > 2 { return false }
+        arr.append([c1, c2])
+      }
+    }
+    return arr.count == 2 && arr[0] == arr[1].reversed()
+  }
 }
 
 

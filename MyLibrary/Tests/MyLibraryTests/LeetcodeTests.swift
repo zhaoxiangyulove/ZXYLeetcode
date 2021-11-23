@@ -97,8 +97,15 @@ final class LeetcodeTestCase: XCTestCase {
   }
   
   func test_397() {
-//    XCTAssertEqual(solution.integerReplacement(8), 3)
-//    XCTAssertEqual(solution.integerReplacement(7), 4)
+    XCTAssertEqual(solution.integerReplacement(8), 3)
+    XCTAssertEqual(solution.integerReplacement(7), 4)
     XCTAssertEqual(solution.integerReplacement(199999999), 33)
+  }
+  
+  func test_859() {
+    XCTAssertTrue(solution.buddyStrings("ab", "ba"))
+    XCTAssertFalse(solution.buddyStrings("ab", "ab"))
+    XCTAssertTrue(solution.buddyStrings("aa", "aa"))
+    XCTAssertTrue(solution.buddyStrings("aaaaaaabc", "aaaaaaacb"))
   }
 }
