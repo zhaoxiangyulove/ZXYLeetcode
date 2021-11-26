@@ -113,4 +113,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.originalDigits("owoztneoer"), "012")
     XCTAssertEqual(solution.originalDigits("fviefuro"), "45")
   }
+  
+  func test_700() {
+    let node1 = TreeNode(2, TreeNode(1), TreeNode(3))
+    let node = TreeNode(4, node1, TreeNode(7))
+    XCTAssertNil(solution.searchBST(node, 5))
+    XCTAssertEqual(solution.searchBST(node, 2), node1)
+  }
 }

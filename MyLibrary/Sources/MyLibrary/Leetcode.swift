@@ -1,4 +1,5 @@
 import Darwin
+import Foundation
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -326,6 +327,26 @@ class Solution {
       for _ in 0..<digits[i] { result += "\(i)"}
     }
     return result
+  }
+  
+  func searchBST(_ root: TreeNode?, _ val: Int) -> TreeNode? {
+    guard let root = root else {
+      return nil
+    }
+    var temp = [root];
+    while temp.count != 0 {
+      let node = temp.removeLast()
+      if node.val == val {
+        return node
+      }
+      if let left = node.left {
+        temp.append(left)
+      }
+      if let right = node.right {
+        temp.append(right)
+      }
+    }
+    return nil
   }
 }
 
