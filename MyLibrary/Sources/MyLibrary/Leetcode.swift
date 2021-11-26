@@ -286,6 +286,47 @@ class Solution {
     }
     return arr.count == 2 && arr[0] == arr[1].reversed()
   }
+  
+  func originalDigits(_ s: String) -> String {
+    var digits: [Int] = [Int](repeating: 0, count: 10)
+    for item in s {
+      switch item {
+      case "z":// zero
+        digits[0] += 1
+      case "o":// zero one two four
+        digits[1] += 1
+      case "w":// two
+        digits[2] += 1
+      case "t":// two three eight
+        digits[3] += 1
+      case "u":// four
+        digits[4] += 1
+      case "f":// four five
+        digits[5] += 1
+      case "s":// six seven
+        digits[6] += 1
+      case "v":// five seven
+        digits[7] += 1
+      case "g":// eight
+        digits[8] += 1
+      case "n":// one seven nine
+        digits[9] += 1
+      default:
+        break
+      }
+    }
+    digits[1] = digits[1] - digits[0] - digits[2] - digits[4]
+    digits[3] = digits[3] - digits[2] - digits[8]
+    digits[5] = digits[5] - digits[4]
+    digits[7] = digits[7] - digits[5]
+    digits[6] = digits[6] - digits[7]
+    digits[9] = (digits[9] - digits[1] - digits[7]) / 2
+    var result: String = ""
+    for i in 0..<digits.count {
+      for _ in 0..<digits[i] { result += "\(i)"}
+    }
+    return result
+  }
 }
 
 

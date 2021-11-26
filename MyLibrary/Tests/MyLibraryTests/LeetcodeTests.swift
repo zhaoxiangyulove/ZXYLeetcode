@@ -108,4 +108,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertTrue(solution.buddyStrings("aa", "aa"))
     XCTAssertTrue(solution.buddyStrings("aaaaaaabc", "aaaaaaacb"))
   }
+  
+  func test_423() {
+    XCTAssertEqual(solution.originalDigits("owoztneoer"), "012")
+    XCTAssertEqual(solution.originalDigits("fviefuro"), "45")
+  }
 }
