@@ -120,4 +120,14 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertNil(solution.searchBST(node, 5))
     XCTAssertEqual(solution.searchBST(node, 2), node1)
   }
+  
+  func test_786() {
+    XCTAssertEqual(solution.kthSmallestPrimeFraction([1, 2, 3 ,5], 3), [2, 5])
+    XCTAssertEqual(solution.kthSmallestPrimeFraction([1, 7], 1), [1, 7])
+  }
+  
+  func test_400() {
+//    XCTAssertEqual(solution.findNthDigit(3), 3)
+    XCTAssertEqual(solution.findNthDigit(30000), 7)
+  }
 }
