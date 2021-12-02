@@ -130,4 +130,12 @@ final class LeetcodeTestCase: XCTestCase {
 //    XCTAssertEqual(solution.findNthDigit(3), 3)
     XCTAssertEqual(solution.findNthDigit(30000), 7)
   }
+  
+  func test_1146() {
+    XCTAssertEqual(solution.maxPower("leetcode"), 2)
+    XCTAssertEqual(solution.maxPower("abbcccddddeeeeedcba"), 5)
+    XCTAssertEqual(solution.maxPower("triplepillooooow"), 5)
+    XCTAssertEqual(solution.maxPower("hooraaaaaaaaaaay"), 11)
+    XCTAssertEqual(solution.maxPower("tourist"), 1)
+  }
 }

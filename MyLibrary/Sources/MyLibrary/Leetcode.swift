@@ -383,6 +383,21 @@ class Solution {
     
     return digit
   }
+  
+  func maxPower(_ s: String) -> Int {
+    var maxCount = 1
+    var temp = 0
+    _ = s.reduce(s.first) { char1, char2 in
+      if char1 == char2 {
+        temp += 1
+        maxCount = max(maxCount, temp)
+      } else {
+        temp = 1
+      }
+      return char2
+    }
+    return maxCount
+  }
 }
 
 
