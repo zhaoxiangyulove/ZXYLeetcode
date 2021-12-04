@@ -1,5 +1,6 @@
 import Darwin
 import Foundation
+import AppKit
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -397,6 +398,23 @@ class Solution {
       return char2
     }
     return maxCount
+  }
+  
+  func largestSumAfterKNegations(_ nums: [Int], _ k: Int) -> Int {
+    var temp = nums.sorted()
+    var n = k
+    for index in 0..<temp.count {
+      if n == 0 || temp[index] >= 0 {
+        break
+      }
+      temp[index] = -temp[index]
+      n -= 1
+    }
+    if n % 2 != 0 {
+      temp.sort()
+      temp[0] = -temp[0]
+    }
+    return temp.reduce(0, +)
   }
 }
 

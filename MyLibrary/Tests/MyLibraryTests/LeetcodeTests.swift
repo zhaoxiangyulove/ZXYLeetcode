@@ -138,4 +138,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.maxPower("hooraaaaaaaaaaay"), 11)
     XCTAssertEqual(solution.maxPower("tourist"), 1)
   }
+  
+  func test_1005() {
+    XCTAssertEqual(solution.largestSumAfterKNegations([4,2,3], 1), 5)
+    XCTAssertEqual(solution.largestSumAfterKNegations([3,-1,0,2], 3), 6)
+    XCTAssertEqual(solution.largestSumAfterKNegations([2,-3,-1,5,-4], 2), 13)
+  }
 }
