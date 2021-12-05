@@ -144,4 +144,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.largestSumAfterKNegations([3,-1,0,2], 3), 6)
     XCTAssertEqual(solution.largestSumAfterKNegations([2,-3,-1,5,-4], 2), 13)
   }
+  
+  func test_383() {
+    XCTAssertFalse(solution.canConstruct("a", "b"))
+    XCTAssertFalse(solution.canConstruct("aa", "ab"))
+    XCTAssert(solution.canConstruct("aa", "aab"))
+  }
 }

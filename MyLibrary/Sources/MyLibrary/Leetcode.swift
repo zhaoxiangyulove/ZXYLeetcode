@@ -416,6 +416,24 @@ class Solution {
     }
     return temp.reduce(0, +)
   }
+  
+  func canConstruct(_ ransomNote: String, _ magazine: String) -> Bool {
+    var temp = [Int](repeating: 0, count: 26)
+    let a = "a".unicodeScalars.first!.value
+    magazine.unicodeScalars.forEach { unicode in
+      let index = Int(unicode.value - a)
+      temp[index] += 1
+    }
+    for unicode in ransomNote.unicodeScalars {
+      let index = Int(unicode.value - a)
+      let count = temp[index]
+      if count == 0 {
+        return false
+      }
+      temp[index] = count - 1
+    }
+    return true
+  }
 }
 
 
