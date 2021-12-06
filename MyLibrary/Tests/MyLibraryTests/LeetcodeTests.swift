@@ -157,4 +157,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.superPow(1, [4, 3, 3, 8, 5, 2]), 1)
     XCTAssertEqual(solution.superPow(2147483647, [2, 0, 0]), 1198)
   }
+  
+  func test_1816() {
+    XCTAssertEqual(solution.truncateSentence("Hello how are you Contestant", 4), "Hello how are you")
+    XCTAssertEqual(solution.truncateSentence("What is the solution to this problem", 4), "What is the solution")
+    XCTAssertEqual(solution.truncateSentence("chopper is not a tanuki", 5), "chopper is not a tanuki")
+  }
 }

@@ -1,6 +1,4 @@
-import Darwin
 import Foundation
-import AppKit
 class Solution {
   // 268
   func missingNumber(_ nums: [Int]) -> Int {
@@ -458,6 +456,13 @@ class Solution {
     }
   }
   
+  func truncateSentence(_ s: String, _ k: Int) -> String {
+    var temp = s.split(separator: " ", maxSplits: k)
+    if k < temp.count {
+      temp.removeLast()
+    }
+    return temp.joined(separator: " ")
+  }
 }
 
 
