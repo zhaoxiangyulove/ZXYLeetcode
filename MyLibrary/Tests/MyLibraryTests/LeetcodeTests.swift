@@ -150,4 +150,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.canConstruct("aa", "ab"))
     XCTAssert(solution.canConstruct("aa", "aab"))
   }
+  
+  func test_372() {
+    XCTAssertEqual(solution.superPow(2, [3]), 8)
+    XCTAssertEqual(solution.superPow(2, [1, 0]), 1024)
+    XCTAssertEqual(solution.superPow(1, [4, 3, 3, 8, 5, 2]), 1)
+    XCTAssertEqual(solution.superPow(2147483647, [2, 0, 0]), 1198)
+  }
 }

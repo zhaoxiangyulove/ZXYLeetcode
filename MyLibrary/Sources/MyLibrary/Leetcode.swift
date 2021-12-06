@@ -434,6 +434,30 @@ class Solution {
     }
     return true
   }
+  
+  let base = 1337
+  func superPow(_ a: Int, _ b: [Int]) -> Int {
+    if b.count == 0 {
+      return 1
+    }
+    var temp = b
+    let last = temp.removeLast()
+    let part1 = myPow(a, last)
+    let part2 = myPow(superPow(a, temp), 10)
+    return (part1 * part2) % base
+  }
+  
+  func myPow(_ a: Int, _ b: Int) -> Int {
+    if b == 0 {
+      return 1
+    }
+    if b % 2 == 0 {
+      return myPow(((a % base) * (a % base)) % base, b / 2)
+    } else {
+      return ((a % base) * myPow(a, b - 1)) % base
+    }
+  }
+  
 }
 
 
