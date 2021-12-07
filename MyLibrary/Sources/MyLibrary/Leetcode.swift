@@ -463,6 +463,48 @@ class Solution {
     }
     return temp.joined(separator: " ")
   }
+  
+  func colorBorder(_ grid: [[Int]], _ row: Int, _ col: Int, _ color: Int) -> [[Int]] {
+    var visited = Set<String>()
+    var needVisited = ["\(row),\(col)"]
+    var result = grid
+    let initColor = grid[row][col]
+    let offsets = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    while needVisited.count != 0 {
+      let current = needVisited.removeLast()
+      if visited.contains(current) {
+        continue
+      }
+      visited.insert(current)
+      let temp = current.split(separator: ",")
+      let row = Int(temp[0])!
+      let col = Int(temp[1])!
+      var count = 0
+      for (x, y) in offsets {
+        let nearX = row + x
+        let nearY = col + y
+        if hasTheSameColor(initColor, grid, nearX, nearY) {
+          if !visited.contains("\(nearX),\(nearY)") {
+            needVisited.append("\(nearX),\(nearY)")
+          }
+          count += 1
+        }
+      }
+      if count != 4 {
+        result[row][col] = color
+      }
+    }
+    return result
+  }
+  
+  func hasTheSameColor(_ initColor: Int, _ grid: [[Int]], _ nearRow: Int, _ nearCol: Int ) -> Bool {
+    let m = grid.count
+    let n = grid[0].count
+    if nearRow == m || nearRow == -1 || nearCol == n || nearCol == -1 {
+      return false
+    }
+    return grid[nearRow][nearCol] == initColor
+  }
 }
 
 

@@ -163,4 +163,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.truncateSentence("What is the solution to this problem", 4), "What is the solution")
     XCTAssertEqual(solution.truncateSentence("chopper is not a tanuki", 5), "chopper is not a tanuki")
   }
+  
+  func test_1034() {
+    XCTAssertEqual(solution.colorBorder([[1,1],[1,2]], 0, 0, 3), [[3,3],[3,2]])
+    XCTAssertEqual(solution.colorBorder([[1,2,2],[2,3,2]], 0, 1, 3), [[1,3,3],[2,3,3]])
+    XCTAssertEqual(solution.colorBorder([[1,1,1],[1,1,1],[1,1,1]], 1, 1, 2), [[2,2,2],[2,1,2],[2,2,2]])
+  }
 }
