@@ -185,4 +185,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.validTicTacToe(["OXX","XOX","OXO"]))
     XCTAssertFalse(solution.validTicTacToe(["OOO","XXO","XXX"]))
   }
+  
+  func test_50() {
+    XCTAssertEqual(solution.myPow(2.00000, 10), 1024.00000, accuracy: 0.001)
+    XCTAssertEqual(solution.myPow(2.10000, 3), 9.26100, accuracy: 0.001)
+    XCTAssertEqual(solution.myPow(2.00000, -2), 0.25000, accuracy: 0.001)
+  }
 }
