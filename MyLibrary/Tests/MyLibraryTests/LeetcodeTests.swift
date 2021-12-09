@@ -174,4 +174,15 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.maxSumOfThreeSubarrays([1,2,1,2,6,7,5,1], 2), [0,3,5])
     XCTAssertEqual(solution.maxSumOfThreeSubarrays([1,2,1,2,1,2,1,2,1], 2), [0,2,4])
   }
+  
+  func test_794() {
+    XCTAssertFalse(solution.validTicTacToe(["O  ","   ","   "]))
+    XCTAssertFalse(solution.validTicTacToe(["XOX"," X ","   "]))
+    XCTAssertFalse(solution.validTicTacToe(["XXX","   ","OOO"]))
+    XCTAssertTrue(solution.validTicTacToe(["XOX","O O","XOX"]))
+    XCTAssertFalse(solution.validTicTacToe(["XXX","XOO","OO "]))
+    XCTAssertFalse(solution.validTicTacToe(["OXX","XOX","OXO"]))
+    XCTAssertFalse(solution.validTicTacToe(["OXX","XOX","OXO"]))
+    XCTAssertFalse(solution.validTicTacToe(["OOO","XXO","XXX"]))
+  }
 }

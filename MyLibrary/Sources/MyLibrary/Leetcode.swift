@@ -540,6 +540,57 @@ class Solution {
     }
     return ans
   }
+  
+  func validTicTacToe(_ board: [String]) -> Bool {
+    var xIndex = Set<String>()
+    var oIndex = Set<String>()
+    for (a, str) in board.enumerated() {
+      for (b, char) in str.enumerated() {
+        if char == "X" {
+          xIndex.insert("\(a),\(b)")
+        } else if char == "O" {
+          oIndex.insert("\(a),\(b)")
+        }
+      }
+    }
+    let xCount = xIndex.count
+    let oCount = oIndex.count
+    if oCount > xCount || xCount - oCount >= 2 {
+      return false
+    }
+    let xInLine = checkInLine(points: xIndex)
+    let oInLine = checkInLine(points: oIndex)
+    if xInLine && oInLine {
+      return false
+    }
+    if xInLine {
+      return xCount - oCount == 1
+    }
+    if oInLine {
+      return xCount == oCount
+    }
+    return true
+  }
+  
+  func checkInLine(points: Set<String>) -> Bool {
+    let lines = [
+      ["0,0", "0,1", "0,2"],
+      ["1,0", "1,1", "1,2"],
+      ["2,0", "2,1", "2,2"],
+      ["0,0", "1,0", "2,0"],
+      ["0,1", "1,1", "2,1"],
+      ["0,2", "1,2", "2,2"],
+      ["0,0", "1,1", "2,2"],
+      ["0,2", "1,1", "2,0"]
+    ]
+    for line in lines {
+      let temp = Set(line)
+      if temp.isSubset(of: points) {
+        return true
+      }
+    }
+    return false
+  }
 }
 
 
