@@ -191,4 +191,12 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.myPow(2.10000, 3), 9.26100, accuracy: 0.001)
     XCTAssertEqual(solution.myPow(2.00000, -2), 0.25000, accuracy: 0.001)
   }
+  
+  func test_748() {
+    XCTAssertEqual(solution.shortestCompletingWord("1s3 PSt", ["step", "steps", "stripe", "stepple"]), "steps")
+    XCTAssertEqual(solution.shortestCompletingWord("1s3 456", ["looks", "pest", "stew", "show"]), "pest")
+    XCTAssertEqual(solution.shortestCompletingWord("Ah71752", ["suggest","letter","of","husband","easy","education","drug","prevent","writer","old"]), "husband")
+    XCTAssertEqual(solution.shortestCompletingWord("1s3 456", ["looks", "pest", "stew", "show"]), "pest")
+    
+  }
 }

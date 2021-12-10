@@ -591,6 +591,7 @@ class Solution {
     }
     return false
   }
+  
   func myPow(_ x: Double, _ n: Int) -> Double {
     if n == 0 {
       return 1
@@ -602,6 +603,48 @@ class Solution {
       return myPow(x * x, n / 2)
     }
     return x * myPow(x, n - 1)
+  }
+  
+  func shortestCompletingWord(_ licensePlate: String, _ words: [String]) -> String {
+    var charSet = CharacterSet()
+    charSet.formUnion(.decimalDigits)
+    charSet.formUnion(.whitespacesAndNewlines)
+    let trimStr = licensePlate.filter {
+      !$0.isNumber && !$0.isWhitespace
+    }
+    var temp = [Int](repeating: 0, count: 26)
+    let a = "a".unicodeScalars.first!.value
+    let A = "A".unicodeScalars.first!.value
+    trimStr.unicodeScalars.forEach { unicode in
+      let index = Int(unicode.value - (unicode.value >= a ? a : A))
+      temp[index] += 1
+    }
+    var result = (Int.max, "")
+    for word in words {
+      var check = temp
+      for unicode in word.unicodeScalars {
+        let index = Int(unicode.value - a)
+        let count = check[index]
+        check[index] = count - 1
+      }
+      var needAddCharCount = 0
+      var containAllChar = true
+      for count in check {
+        if count > 0 {
+          containAllChar = false
+          break
+        }
+        needAddCharCount -= count
+      }
+      if containAllChar == false {
+        continue
+      }
+      if needAddCharCount < result.0 {
+        result.0 = needAddCharCount
+        result.1 = word
+      }
+    }
+    return result.1
   }
 }
 
