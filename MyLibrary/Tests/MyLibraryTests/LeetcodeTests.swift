@@ -197,6 +197,15 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.shortestCompletingWord("1s3 456", ["looks", "pest", "stew", "show"]), "pest")
     XCTAssertEqual(solution.shortestCompletingWord("Ah71752", ["suggest","letter","of","husband","easy","education","drug","prevent","writer","old"]), "husband")
     XCTAssertEqual(solution.shortestCompletingWord("1s3 456", ["looks", "pest", "stew", "show"]), "pest")
-    
+  }
+  
+  func test_911() {
+    let topVoted = TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30])
+    XCTAssertEqual(topVoted.q(3), 0)
+    XCTAssertEqual(topVoted.q(12), 1)
+    XCTAssertEqual(topVoted.q(25), 1)
+    XCTAssertEqual(topVoted.q(15), 0)
+    XCTAssertEqual(topVoted.q(24), 0)
+    XCTAssertEqual(topVoted.q(8), 1)
   }
 }
