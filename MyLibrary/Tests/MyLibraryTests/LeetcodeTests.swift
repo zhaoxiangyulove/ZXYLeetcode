@@ -208,4 +208,8 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(topVoted.q(24), 0)
     XCTAssertEqual(topVoted.q(8), 1)
   }
+  
+  func test_807() {
+    XCTAssertEqual(solution.maxIncreaseKeepingSkyline([[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]), 35)
+  }
 }

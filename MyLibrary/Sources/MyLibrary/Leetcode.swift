@@ -646,6 +646,32 @@ class Solution {
     }
     return result.1
   }
+  
+  func maxIncreaseKeepingSkyline(_ grid: [[Int]]) -> Int {
+    var sum = 0
+    var xMax = [Int]()
+    var yMax = [Int]()
+    for a in 0 ..< grid.count {
+      var tempMax = 0
+      for temp in grid {
+        tempMax = max(tempMax, temp[a])
+      }
+      xMax.append(tempMax)
+    }
+    for temp in grid {
+      var tempMax = 0
+      for a in temp {
+        tempMax = max(tempMax, a)
+      }
+      yMax.append(tempMax)
+    }
+    for indexX in 0 ..< xMax.count {
+      for indexY in 0 ..< yMax.count {
+        sum += min(xMax[indexX], yMax[indexY]) - grid[indexY][indexX]
+      }
+    }
+    return sum
+  }
 }
 
 
