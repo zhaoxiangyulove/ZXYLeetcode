@@ -700,6 +700,60 @@ class Solution {
     }
     return result.count
   }
+  
+  func loudAndRich(_ richer: [[Int]], _ quiet: [Int]) -> [Int] {
+    if richer.isEmpty {
+      var temp = [Int](repeating: 0, count: quiet.count)
+      for index in 0..<temp.count {
+        temp[index] = index
+      }
+      return temp
+    }
+    var richDic = [Int: [Int]]()
+    for rich in richer {
+      let r = rich[0]
+      let l = rich[1]
+      var temp = richDic[l] ?? [Int]()
+      temp.append(r)
+      richDic[l] = temp
+    }
+    var tempDic = [Int: [Int]]()
+    richDic.keys.forEach { key in
+      var temp = [key]
+      var result = [Int]()
+      while !temp.isEmpty {
+        let first = temp.removeFirst()
+        if let values = tempDic[first] {
+          result.append(contentsOf: values)
+          continue
+        }
+        let richers = richDic[first] ?? [Int]()
+        temp.append(contentsOf: richers)
+        result.append(contentsOf: richers)
+      }
+      richDic[key] = result
+      tempDic[key] = result
+    }
+    var result = [Int]()
+    for index in 0..<quiet.count {
+      guard let richers = richDic[index] else {
+        result.append(index)
+        continue
+      }
+      var questest = quiet[index]
+      var temp = index
+      for richer in richers {
+        let qr = quiet[richer]
+        if questest < qr {
+          continue
+        }
+        temp = richer
+        questest = qr
+      }
+      result.append(temp)
+    }
+    return result
+  }
 }
 
 
