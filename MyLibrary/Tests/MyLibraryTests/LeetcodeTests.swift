@@ -212,4 +212,12 @@ final class LeetcodeTestCase: XCTestCase {
   func test_807() {
     XCTAssertEqual(solution.maxIncreaseKeepingSkyline([[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]), 35)
   }
+  
+  func test_630() {
+    XCTAssertEqual(solution.scheduleCourse([[100, 200], [200, 1300], [1000, 1250], [2000, 3200]]), 3)
+    XCTAssertEqual(solution.scheduleCourse([[1,2]]), 1)
+    XCTAssertEqual(solution.scheduleCourse([[3,2],[4,3]]), 0)
+    XCTAssertEqual(solution.scheduleCourse([[1,2],[2,3]]), 2)
+    XCTAssertEqual(solution.scheduleCourse([[7,17],[3,12],[10,20],[9,10],[5,20],[10,19],[4,18]]), 4)
+  }
 }

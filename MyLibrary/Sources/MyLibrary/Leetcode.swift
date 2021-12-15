@@ -672,6 +672,34 @@ class Solution {
     }
     return sum
   }
+  
+  func scheduleCourse(_ courses: [[Int]]) -> Int {
+    let temp = courses.sorted {
+      $0[1] < $1[1]
+    }
+    var result = [Int]()
+    var total = 0
+    for course in temp {
+      let duration = course[0]
+      let ddl = course[1]
+      if duration + total <= ddl {
+        total += duration
+        result.append(duration)
+        continue
+      }
+      if result.count == 0 {
+        continue
+      }
+      result.sort()
+      let last = result.last!
+      if last > duration {
+        total -= last - duration
+        result.removeLast()
+        result.append(duration)
+      }
+    }
+    return result.count
+  }
 }
 
 
