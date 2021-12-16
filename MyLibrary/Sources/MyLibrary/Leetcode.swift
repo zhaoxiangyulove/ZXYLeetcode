@@ -805,6 +805,28 @@ class Solution {
     return lowestCommonAncestor(root.right!, p, q)
   }
   
+  func getMinimumDifference(_ root: TreeNode?) -> Int {
+    guard let root = root else {
+      return 0
+    }
+    var leftMin = Int.max
+    var rightMin = Int.max
+    if let left = root.left {
+      var temp = left
+      while let right = temp.right {
+        temp = right
+      }
+      leftMin = min(getMinimumDifference(root.left), root.val - temp.val)
+    }
+    if let right = root.right {
+      var temp = right
+      while let left = temp.left {
+        temp = left
+      }
+      rightMin = min(getMinimumDifference(root.right), temp.val - root.val)
+    }
+    return min(leftMin, rightMin)
+  }
 }
 
 

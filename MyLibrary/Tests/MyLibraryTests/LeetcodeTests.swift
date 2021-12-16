@@ -239,4 +239,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.lowestCommonAncestor(root, TreeNode(2), TreeNode(8)).val, 6)
     XCTAssertEqual(solution.lowestCommonAncestor(root, TreeNode(2), TreeNode(4)).val, 2)
   }
+  
+  func test_530() {
+    let root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(6))
+    XCTAssertEqual(solution.getMinimumDifference(root), 1)
+    let root1 = TreeNode(236, TreeNode(104, nil, TreeNode(227)), TreeNode(701, nil, TreeNode(911)))
+    XCTAssertEqual(solution.getMinimumDifference(root1), 9)
+  }
 }
