@@ -754,6 +754,57 @@ class Solution {
     }
     return result
   }
+  
+  func visiblePoints(_ points: [[Int]], _ angle: Int, _ location: [Int]) -> Int {
+    var list = [Double]()
+    var cnt = 0
+    let x = location[0], y = location[1]
+    let pi = Double.pi
+    for point in points {
+      let a = point[0], b = point[1]
+      if a == x, b == y {
+        cnt += 1
+        continue
+      }
+      list.append(atan2(Double(b - y), Double(a - x)))
+    }
+    list.sort()
+    let m = list.count
+    for i in 0 ..< m {
+      list.append(list[i] + 2 * pi)
+    }
+    var maxCnt = 0
+    var right = 0
+    let toDegree = Double(angle) * pi / 180
+    for i in 0 ..< m {
+      let curr = list[i] + toDegree
+      while right < list.count, list[right] <= curr {
+        right += 1
+      }
+      maxCnt = max(maxCnt, right - i)
+    }
+    return maxCnt + cnt
+  }
+  
+  func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {
+    guard let root = root, let p = p, let q = q else {
+      return nil
+    }
+    let nodeL = p.val > q.val ? q : p
+    let nodeR = p.val > q.val ? p : q
+    return lowestCommonAncestor(root, nodeL, nodeR)
+  }
+  
+  func lowestCommonAncestor(_ root: TreeNode, _ p: TreeNode, _ q: TreeNode) -> TreeNode {
+    if p.val <= root.val && q.val >= root.val {
+      return root
+    }
+    if q.val < root.val {
+      return lowestCommonAncestor(root.left!, p, q)
+    }
+    return lowestCommonAncestor(root.right!, p, q)
+  }
+  
 }
 
 
