@@ -827,6 +827,18 @@ class Solution {
     }
     return min(leftMin, rightMin)
   }
+  
+  func numWaterBottles(_ numBottles: Int, _ numExchange: Int) -> Int {
+    var result = numBottles
+    var empty = numBottles
+    while empty >= numExchange {
+      let remain = empty % numExchange
+      let newBottom = empty / numExchange
+      result += newBottom
+      empty = newBottom + remain
+    }
+    return result
+  }
 }
 
 

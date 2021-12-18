@@ -246,4 +246,11 @@ final class LeetcodeTestCase: XCTestCase {
     let root1 = TreeNode(236, TreeNode(104, nil, TreeNode(227)), TreeNode(701, nil, TreeNode(911)))
     XCTAssertEqual(solution.getMinimumDifference(root1), 9)
   }
+  
+  func test_1518() {
+    XCTAssertEqual(solution.numWaterBottles(9, 3), 13)
+    XCTAssertEqual(solution.numWaterBottles(15, 4), 19)
+    XCTAssertEqual(solution.numWaterBottles(5, 5), 6)
+    XCTAssertEqual(solution.numWaterBottles(2, 3), 2)
+  }
 }
