@@ -253,4 +253,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.numWaterBottles(5, 5), 6)
     XCTAssertEqual(solution.numWaterBottles(2, 3), 2)
   }
+  
+  func test_419() {
+    XCTAssertEqual(solution.countBattleships([["X",".",".","X"],[".",".",".","X"],[".",".",".","X"]]), 2)
+    XCTAssertEqual(solution.countBattleships([["."]]), 0)
+  }
 }

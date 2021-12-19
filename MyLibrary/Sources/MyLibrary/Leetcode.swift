@@ -839,6 +839,31 @@ class Solution {
     }
     return result
   }
+  
+  func countBattleships(_ board: [[Character]]) -> Int {
+    var count = 0
+    let rowCount = board.count
+    let colCount = board[0].count
+    for row in 0..<rowCount {
+      for col in 0..<colCount {
+        if board[row][col] == "." {
+          continue
+        }
+        var right = false
+        var bottom = false
+        if col != colCount - 1 {
+          right = board[row][col + 1] == "X"
+        }
+        if row != rowCount - 1 {
+          bottom = board[row + 1][col] == "X"
+        }
+        if !right && !bottom {
+          count += 1
+        }
+      }
+    }
+    return count
+  }
 }
 
 
