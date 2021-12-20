@@ -864,6 +864,30 @@ class Solution {
     }
     return count
   }
+  
+  func findJudge(_ n: Int, _ trust: [[Int]]) -> Int {
+    var dic = [Int: Set<Int>]()
+    var trustPerson = 0
+    var maxCount = 0
+    var personSet = Set<Int>()
+    for temp in trust {
+      let trust = temp[1]
+      var set = dic[trust] ?? Set<Int>()
+      let person = temp[0]
+      set.insert(person)
+      personSet.insert(person)
+      let currentCount = set.count
+      if currentCount > maxCount {
+        trustPerson = trust
+        maxCount = currentCount
+      }
+      dic[temp[1]] = set
+    }
+    if maxCount == n - 1 && !personSet.contains(trustPerson) {
+      return trustPerson
+    }
+    return -1
+  }
 }
 
 
