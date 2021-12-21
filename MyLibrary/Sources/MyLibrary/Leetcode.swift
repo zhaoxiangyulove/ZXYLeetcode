@@ -960,6 +960,21 @@ class Solution {
     result.append(node.val)
     middleTravel(node: node.right, result: &result)
   }
+  
+  func binaryTreePaths(_ root: TreeNode?) -> [String] {
+    guard let root = root else {
+      return []
+    }
+    var temp = [String]()
+    temp.append(contentsOf: binaryTreePaths(root.left))
+    temp.append(contentsOf: binaryTreePaths(root.right))
+    guard temp.count > 0 else {
+      return ["\(root.val)"]
+    }
+    return temp.map { str in
+      "\(root.val)->\(str)"
+    }
+  }
 }
 
 

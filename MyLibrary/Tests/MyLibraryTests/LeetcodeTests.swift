@@ -291,4 +291,10 @@ final class LeetcodeTestCase: XCTestCase {
     let node3 = TreeNode(1, nil, TreeNode(2))
     XCTAssertEqual(solution.inorderTraversal(node3), [1,2])
   }
+  
+  func test_257() {
+    let node = TreeNode(1, TreeNode(2, nil, TreeNode(5)), TreeNode(3))
+    XCTAssertEqual(solution.binaryTreePaths(node), ["1->2->5","1->3"])
+    XCTAssertEqual(solution.binaryTreePaths(TreeNode(1)), ["1"])
+  }
 }
