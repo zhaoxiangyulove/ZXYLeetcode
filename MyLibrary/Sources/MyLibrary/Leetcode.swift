@@ -888,6 +888,18 @@ class Solution {
     }
     return -1
   }
+  
+  func findRadius(_ houses: [Int], _ heaters: [Int]) -> Int {
+    var radius = 0
+    houses.forEach { location in
+      var nearest = Int.max
+      heaters.forEach { heart in
+        nearest = min(nearest, abs(heart - location))
+      }
+      radius = max(radius, nearest)
+    }
+    return radius
+  }
 }
 
 

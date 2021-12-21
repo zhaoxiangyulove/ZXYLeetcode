@@ -266,4 +266,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.findJudge(3, [[1,2],[2,3]]), -1)
     XCTAssertEqual(solution.findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]), 3)
   }
+  
+  func test_475() {
+    XCTAssertEqual(solution.findRadius([1,2,3], [2]), 1)
+    XCTAssertEqual(solution.findRadius([1,2,3,4], [1,4]), 1)
+    XCTAssertEqual(solution.findRadius([1,5], [2]), 3)
+  }
 }
