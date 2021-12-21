@@ -945,6 +945,21 @@ class Solution {
     let days = Month(rawValue: month)!.getContinuedDays(isLeapYear: leapYear)
     return days + day
   }
+  
+  func inorderTraversal(_ root: TreeNode?) -> [Int] {
+    var result = [Int]()
+    middleTravel(node: root, result: &result)
+    return result
+  }
+  
+  func middleTravel(node: TreeNode?, result: inout [Int]) {
+    guard let node = node else {
+      return
+    }
+    middleTravel(node: node.left, result: &result)
+    result.append(node.val)
+    middleTravel(node: node.right, result: &result)
+  }
 }
 
 

@@ -280,4 +280,15 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.dayOfYear("2004-03-01"), 61)
   }
   
+  func test_94() {
+    let node = TreeNode(1, nil, TreeNode(2, TreeNode(3), nil))
+    XCTAssertEqual(solution.inorderTraversal(node), [1,3,2])
+    XCTAssertEqual(solution.inorderTraversal(nil), [])
+    let node1 = TreeNode(1)
+    XCTAssertEqual(solution.inorderTraversal(node1), [1])
+    let node2 = TreeNode(1, TreeNode(2), nil)
+    XCTAssertEqual(solution.inorderTraversal(node2), [2,1])
+    let node3 = TreeNode(1, nil, TreeNode(2))
+    XCTAssertEqual(solution.inorderTraversal(node3), [1,2])
+  }
 }
