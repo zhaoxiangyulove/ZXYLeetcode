@@ -900,6 +900,51 @@ class Solution {
     }
     return radius
   }
+  
+  enum Month: Int {
+    case Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sept, Oct, Nov, Dec
+    
+    func getContinuedDays(isLeapYear: Bool) -> Int {
+      var days = 0
+      switch self {
+      case .Jan:
+        days = 0
+      case .Feb:
+        days = 31
+      case .Mar:
+        days = 59
+      case .Apr:
+        days = 90
+      case .May:
+        days = 120
+      case .Jun:
+        days = 151
+      case .Jul:
+        days = 181
+      case .Aug:
+        days = 212
+      case .Sept:
+        days = 243
+      case .Oct:
+        days = 273
+      case .Nov:
+        days = 304
+      case .Dec:
+        days = 334
+      }
+      return days + ((isLeapYear && self.rawValue > 2) ? 1 : 0)
+    }
+  }
+  
+  func dayOfYear(_ date: String) -> Int {
+    let arr = date.split(separator: "-")
+    guard let year = Int(arr[0]), let month = Int(arr[1]), let day = Int(arr[2]) else {
+      return 0
+    }
+    let leapYear = year % 4 == 0
+    let days = Month(rawValue: month)!.getContinuedDays(isLeapYear: leapYear)
+    return days + day
+  }
 }
 
 

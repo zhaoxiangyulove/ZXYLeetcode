@@ -272,4 +272,12 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.findRadius([1,2,3,4], [1,4]), 1)
     XCTAssertEqual(solution.findRadius([1,5], [2]), 3)
   }
+  
+  func test_1154() {
+    XCTAssertEqual(solution.dayOfYear("2019-01-09"), 9)
+    XCTAssertEqual(solution.dayOfYear("2019-02-10"), 41)
+    XCTAssertEqual(solution.dayOfYear("2003-03-01"), 60)
+    XCTAssertEqual(solution.dayOfYear("2004-03-01"), 61)
+  }
+  
 }
