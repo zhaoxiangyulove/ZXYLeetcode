@@ -297,4 +297,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.binaryTreePaths(node), ["1->2->5","1->3"])
     XCTAssertEqual(solution.binaryTreePaths(TreeNode(1)), ["1"])
   }
+  
+  func test_680() {
+    XCTAssertTrue(solution.validPalindrome("aba"))
+    XCTAssertTrue(solution.validPalindrome("abca"))
+    XCTAssertFalse(solution.validPalindrome("abc"))
+    XCTAssertTrue(solution.validPalindrome("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"))
+  }
 }

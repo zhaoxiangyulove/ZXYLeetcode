@@ -975,6 +975,27 @@ class Solution {
       "\(root.val)->\(str)"
     }
   }
+  
+  func validPalindrome(_ s: String) -> Bool {
+    var s = Array(s.utf8), l = 0, r = s.count - 1
+    func isValid(l: Int, r: Int) -> Bool {
+      var l = l, r = r
+      while l < r {
+        if s[l] != s[r] { return false }
+        l += 1
+        r -= 1
+      }
+      return true
+    }
+    while l < r {
+      if s[l] != s[r] {
+        return isValid(l: l + 1, r: r) || isValid(l: l, r: r - 1)
+      }
+      l += 1
+      r -= 1
+    }
+    return true
+  }
 }
 
 
