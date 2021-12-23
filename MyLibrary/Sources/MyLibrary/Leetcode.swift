@@ -996,6 +996,48 @@ class Solution {
     }
     return true
   }
+  
+  func repeatedStringMatch(_ a: String, _ b: String) -> Int {
+    let bCount = b.count
+    let aCount = a.count
+    if aCount > bCount {
+      if a.contains(b) {
+        return 1
+      }
+      if "\(a)\(a)".contains(b) {
+        return 2
+      }
+    }
+    let arr = b.components(separatedBy: a).filter {
+      $0 != ""
+    }
+    if arr.count == 0 {
+      return bCount / aCount
+    }
+    if arr.count > 2 {
+      return -1
+    }
+    if arr.count == 1 {
+      if a.contains(b) {
+        return 1
+      }
+      if "\(a)\(a)".contains(b) {
+        return 2
+      }
+    }
+    var count = 0
+    for str in arr {
+      if a.hasPrefix(str) || a.hasSuffix(str) {
+        count += 1
+      } else {
+        return -1
+      }
+    }
+    let arrCount = arr.reduce(0) {
+      $0 + $1.count
+    }
+    return count + ((bCount - arrCount) / aCount)
+  }
 }
 
 

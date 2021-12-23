@@ -304,4 +304,14 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertFalse(solution.validPalindrome("abc"))
     XCTAssertTrue(solution.validPalindrome("aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"))
   }
+  
+  func test_686() {
+    XCTAssertEqual(solution.repeatedStringMatch("abcd", "cdabcdab"), 3)
+    XCTAssertEqual(solution.repeatedStringMatch("a", "aa"), 2)
+    XCTAssertEqual(solution.repeatedStringMatch("a", "a"), 1)
+    XCTAssertEqual(solution.repeatedStringMatch("abc", "wxyz"), -1)
+    XCTAssertEqual(solution.repeatedStringMatch("aaaaaaaaaaaaaaaaaaaaaab", "ba"), 2)
+    XCTAssertEqual(solution.repeatedStringMatch("abcd", "abcdb"), -1)
+    XCTAssertEqual(solution.repeatedStringMatch("abcd", "bcdab"), 2)
+  }
 }
