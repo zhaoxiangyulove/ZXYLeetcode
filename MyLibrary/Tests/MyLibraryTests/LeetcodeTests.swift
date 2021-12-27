@@ -314,4 +314,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.repeatedStringMatch("abcd", "abcdb"), -1)
     XCTAssertEqual(solution.repeatedStringMatch("abcd", "bcdab"), 2)
   }
+  
+  func test_825() {
+    XCTAssertEqual(solution.numFriendRequests([16,16]), 2)
+    XCTAssertEqual(solution.numFriendRequests([16,17,18]), 2)
+    XCTAssertEqual(solution.numFriendRequests([20,30,100,110,120]), 3)
+  }
 }

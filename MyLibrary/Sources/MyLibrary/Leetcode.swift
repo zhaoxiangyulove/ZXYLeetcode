@@ -1038,6 +1038,22 @@ class Solution {
     }
     return count + ((bCount - arrCount) / aCount)
   }
+  
+  func numFriendRequests(_ ages: [Int]) -> Int {
+    let sorted = ages.sorted()
+    var requests = 0
+    for i in 1..<sorted.count {
+      let currentAge = sorted[i]
+      for j in 0..<i {
+        let preAge = sorted[i - j - 1]
+        if preAge * 2 <= currentAge + 14 {
+          break
+        }
+        requests += (preAge == currentAge ? 2 : 1)
+      }
+    }
+    return requests
+  }
 }
 
 
