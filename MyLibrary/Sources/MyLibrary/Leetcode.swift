@@ -1054,6 +1054,39 @@ class Solution {
     }
     return requests
   }
+  
+  func isEvenOddTree(_ root: TreeNode?) -> Bool {
+    guard let root = root else {
+      return false
+    }
+    var queue = [TreeNode]()
+    queue.append(root)
+    var level = 0
+    while queue.count > 0 {
+      var prev = (level % 2 == 0) ? Int.min : Int.max
+      let count = queue.count
+      for _ in 0 ..< count {
+        let node = queue.removeFirst()
+        let value = node.val
+        if level % 2 == value % 2 {
+          return false
+        }
+        if (level % 2 == 0 && value <= prev) ||
+            (level % 2 == 1 && value >= prev) {
+          return false
+        }
+        prev = value
+        if let left = node.left {
+          queue.append(left)
+        }
+        if let right = node.right {
+          queue.append(right)
+        }
+      }
+      level += 1
+    }
+    return true
+  }
 }
 
 

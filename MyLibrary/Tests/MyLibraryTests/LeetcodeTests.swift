@@ -320,4 +320,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.numFriendRequests([16,17,18]), 2)
     XCTAssertEqual(solution.numFriendRequests([20,30,100,110,120]), 3)
   }
+  
+  func test_1609() {
+    let root = TreeNode(1, TreeNode(10, TreeNode(3, TreeNode(12, TreeNode(3), nil), TreeNode(8)), nil), TreeNode(4, TreeNode(7, TreeNode(6), nil), TreeNode(9, nil, TreeNode(2))))
+    XCTAssertTrue(solution.isEvenOddTree(root))
+  }
 }
