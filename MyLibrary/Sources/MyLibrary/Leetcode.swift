@@ -1087,6 +1087,34 @@ class Solution {
     }
     return true
   }
+  
+  var currentIndex = 0
+  var maxIndex = Int.max
+  func revert(stack: [Int]) -> [Int] {
+    var temp = stack
+    while maxIndex != 0, let last = temp.popLast() {
+      currentIndex = 0
+      revert(stack: &temp, insert: last)
+    }
+    return temp
+  }
+
+  func revert(stack: inout [Int], insert: Int) {
+    guard let temp = stack.popLast() else {
+      maxIndex = currentIndex
+      stack.append(insert)
+      return
+    }
+    if currentIndex == maxIndex - 1 {
+      maxIndex = currentIndex
+      stack.append(temp)
+      stack.append(insert)
+      return
+    }
+    currentIndex += 1
+    revert(stack: &stack, insert: insert)
+    stack.append(temp)
+  }
 }
 
 

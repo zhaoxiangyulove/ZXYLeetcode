@@ -325,4 +325,9 @@ final class LeetcodeTestCase: XCTestCase {
     let root = TreeNode(1, TreeNode(10, TreeNode(3, TreeNode(12, TreeNode(3), nil), TreeNode(8)), nil), TreeNode(4, TreeNode(7, TreeNode(6), nil), TreeNode(9, nil, TreeNode(2))))
     XCTAssertTrue(solution.isEvenOddTree(root))
   }
+  
+  func test_revert_stack() {
+    XCTAssertEqual(solution.revert(stack: [1, 2, 3, 4, 5]), [5, 4, 3, 2, 1])
+  }
+  
 }
