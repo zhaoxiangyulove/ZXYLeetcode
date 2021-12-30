@@ -335,4 +335,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.countQuadruplets([3,3,6,4,5]), 0)
     XCTAssertEqual(solution.countQuadruplets([1,1,1,3,5]), 4)
   }
+  
+  func test_846() {
+    XCTAssertTrue(solution.isNStraightHand([1,2,3,6,2,3,4,7,8], 3))
+    XCTAssertFalse(solution.isNStraightHand([1,2,3,4,5], 4))
+  }
 }

@@ -1132,6 +1132,35 @@ class Solution {
     }
     return result
   }
+  
+  func isNStraightHand(_ hand: [Int], _ groupSize: Int) -> Bool {
+    guard hand.count % groupSize == 0 else {
+      return false
+    }
+    if groupSize == 1 {
+      return true
+    }
+    var temp = hand.sorted()
+    for i in 0..<temp.count - 1 {
+      if temp[i] == -1 {
+        continue
+      }
+      var count = 0
+      for j in i+1..<temp.count {
+        if count == groupSize - 1 {
+          break
+        }
+        if temp[j] - temp[i] == count + 1 {
+          count += 1
+          temp[j] = -1
+        }
+      }
+      if count != groupSize - 1 {
+        return false
+      }
+    }
+    return true
+  }
 }
 
 
