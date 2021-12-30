@@ -330,4 +330,9 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.revert(stack: [1, 2, 3, 4, 5]), [5, 4, 3, 2, 1])
   }
   
+  func test_1995() {
+    XCTAssertEqual(solution.countQuadruplets([1,2,3,6]), 1)
+    XCTAssertEqual(solution.countQuadruplets([3,3,6,4,5]), 0)
+    XCTAssertEqual(solution.countQuadruplets([1,1,1,3,5]), 4)
+  }
 }

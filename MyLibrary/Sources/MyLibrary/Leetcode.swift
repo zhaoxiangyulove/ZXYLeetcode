@@ -1115,6 +1115,23 @@ class Solution {
     revert(stack: &stack, insert: insert)
     stack.append(temp)
   }
+  
+  func countQuadruplets(_ nums: [Int]) -> Int {
+    let count = nums.count
+    var result = 0
+    for a in 0..<count {
+      for b in (a + 1)..<count {
+        for c in (b + 1)..<count {
+          for d in (c + 1)..<count {
+            if nums[a] + nums[b] + nums[c] == nums[d] {
+              result += 1
+            }
+          }
+        }
+      }
+    }
+    return result
+  }
 }
 
 
