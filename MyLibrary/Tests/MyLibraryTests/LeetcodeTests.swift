@@ -340,4 +340,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertTrue(solution.isNStraightHand([1,2,3,6,2,3,4,7,8], 3))
     XCTAssertFalse(solution.isNStraightHand([1,2,3,4,5], 4))
   }
+  
+  func test_1576() {
+    XCTAssertNotEqual(solution.modifyString("?zs"), "zzs")
+    XCTAssertNotEqual(solution.modifyString("ubv?w"), "ubvvw")
+    XCTAssertNotEqual(solution.modifyString("ubv?w"), "ubvww")
+  }
 }

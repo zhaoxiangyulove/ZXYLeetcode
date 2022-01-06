@@ -1161,12 +1161,51 @@ class Solution {
     }
     return true
   }
+  
+  func modifyString(_ s: String) -> String {
+    var unicodeScalars = s.unicodeScalars
+    let target = "?".unicodeScalars.first!
+    var temp = [UnicodeScalar]()
+    while let first = unicodeScalars.popLast() {
+      if first == target {
+        var expect = Set<UnicodeScalar>()
+        if let last = temp.last {
+          expect.insert(last)
+        }
+        if let next = unicodeScalars.last, next != target {
+          expect.insert(next)
+        }
+        temp.append(randomCharScalar(except: expect))
+        continue
+      }
+      temp.append(first)
+    }
+    let value: [UnicodeScalar] = temp.reversed()
+    return String(unicodeScalars: value)
+  }
+  
+  func randomCharScalar(except: Set<UnicodeScalar>) -> UnicodeScalar {
+    let temp = "abcdefghigklmnopqrstuvwxyz".unicodeScalars
+    var value = temp.randomElement()!
+    while except.contains(value) {
+      value = temp.randomElement()!
+    }
+    return value
+  }
 }
-
-
 
 extension StringProtocol {
   subscript(offset: Int) -> Character {
     self[index(startIndex, offsetBy: offset)]
+  }
+}
+
+extension String {
+  init<S: Sequence>(unicodeScalars ucs: S)
+  where S.Iterator.Element == UnicodeScalar
+  {
+    var s = ""
+    s.unicodeScalars.append(contentsOf: ucs)
+    self = s
   }
 }
