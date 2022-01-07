@@ -1192,6 +1192,24 @@ class Solution {
     }
     return value
   }
+  
+  func simplifyPath(_ path: String) -> String {
+    let documents = path.components(separatedBy: "/").compactMap {
+      $0 != "" ? $0 : nil
+    }
+    var result = [String]()
+    documents.forEach {
+      switch $0 {
+      case "..":
+        _ = result.popLast()
+      case ".":
+        _ = result
+      default:
+        result.append($0)
+      }
+    }
+    return "/" + result.joined(separator: "/")
+  }
 }
 
 extension StringProtocol {

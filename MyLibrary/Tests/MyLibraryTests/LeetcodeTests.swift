@@ -346,4 +346,11 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertNotEqual(solution.modifyString("ubv?w"), "ubvvw")
     XCTAssertNotEqual(solution.modifyString("ubv?w"), "ubvww")
   }
+  
+  func test_71() {
+    XCTAssertEqual(solution.simplifyPath("/home/"), "/home")
+    XCTAssertEqual(solution.simplifyPath("/../"), "/")
+    XCTAssertEqual(solution.simplifyPath("/home//foo/"), "/home/foo")
+    XCTAssertEqual(solution.simplifyPath("/a/./b/../../c/"), "/c")
+  }
 }
