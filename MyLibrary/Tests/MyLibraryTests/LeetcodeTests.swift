@@ -353,4 +353,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.simplifyPath("/home//foo/"), "/home/foo")
     XCTAssertEqual(solution.simplifyPath("/a/./b/../../c/"), "/c")
   }
+  
+  func test_1614() {
+    XCTAssertEqual(solution.maxDepth("(1+(2*3)+((8)/4))+1"), 3)
+    XCTAssertEqual(solution.maxDepth("(1)+((2))+(((3)))"), 3)
+    XCTAssertEqual(solution.maxDepth("1+(2*3)/(2-1)"), 1)
+  }
 }

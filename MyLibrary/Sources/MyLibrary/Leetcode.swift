@@ -1210,6 +1210,23 @@ class Solution {
     }
     return "/" + result.joined(separator: "/")
   }
+  
+  func maxDepth(_ s: String) -> Int {
+    var stack = [Int]()
+    var maxDepth = 0
+    for char in s {
+      guard char == "(" || char == ")" else {
+        continue
+      }
+      if char == "(" {
+        stack.append(1)
+      } else {
+        _ = stack.popLast()
+      }
+      maxDepth = max(stack.count, maxDepth)
+    }
+    return maxDepth
+  }
 }
 
 extension StringProtocol {
