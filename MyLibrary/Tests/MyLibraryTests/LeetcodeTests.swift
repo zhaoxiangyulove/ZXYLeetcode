@@ -359,4 +359,19 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.maxDepth("(1)+((2))+(((3)))"), 3)
     XCTAssertEqual(solution.maxDepth("1+(2*3)/(2-1)"), 1)
   }
+  
+  func test_1629() {
+    XCTAssertEqual(solution.slowestKey([9,29,49,50], "cbcd"), "c")
+    XCTAssertEqual(solution.slowestKey([12,23,36,46,62], "spuda"), "a")
+  }
+  func test_306() {
+    XCTAssertTrue(solution.isAdditiveNumber("112358"))
+//    XCTAssertTrue(solution.isAdditiveNumber("199100199"))
+//    XCTAssertFalse(solution.isAdditiveNumber("111"))
+  }
+  
+  func test_findSingleNumber() {
+    XCTAssertEqual(solution.findSingleNumber(18), 10)
+    XCTAssertEqual(solution.findSingleNumber(3), 3)
+  }
 }
