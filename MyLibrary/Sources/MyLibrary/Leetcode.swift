@@ -1306,6 +1306,22 @@ class Solution {
     result += temp
     return result
   }
+  
+  func dominantIndex(_ nums: [Int]) -> Int {
+    if nums.count == 1 {
+      return 0
+    }
+    var (a, b) = (-1, 0)
+    for i in 1..<nums.count {
+      if nums[i] > nums[b] {
+        (a, b) = (b, i)
+      }
+      else if a == -1 || nums[i] > nums[a] {
+        a = i
+      }
+    }
+    return nums[b] >= nums[a] * 2 ? b : -1
+  }
 }
 
 extension StringProtocol {

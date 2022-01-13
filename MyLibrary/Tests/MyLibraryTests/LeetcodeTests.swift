@@ -374,4 +374,10 @@ final class LeetcodeTestCase: XCTestCase {
     XCTAssertEqual(solution.findSingleNumber(18), 10)
     XCTAssertEqual(solution.findSingleNumber(3), 3)
   }
+  
+  func test_747() {
+    XCTAssertEqual(solution.dominantIndex([3,6,1,0]), 1)
+    XCTAssertEqual(solution.dominantIndex([1,2,3,4]), -1)
+    XCTAssertEqual(solution.dominantIndex([1]), 0)
+  }
 }
